@@ -12,11 +12,11 @@
             <img src="https://media0.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Cute animated illustration">
         </div>
 
-        <!-- Play Song Button -->
+        <!-- Play Song Button (Top Right Corner) -->
         <button class="play-song-btn" id="playButton" onclick="togglePlayPause()">Play Our Song</button>
 
-        <!-- Audio element -->
-        <audio id="audio" preload="auto">
+        <!-- Audio element (Hidden) -->
+        <audio id="audio" preload="auto" style="display:none;">
             <source src="Tu-Mera-Koyi-Na-Hoke-Bhi-Kuch-Lage.mp3" type="audio/mp3">
         </audio>
     </div>
@@ -38,7 +38,7 @@
             }
         }
 
-        // Check the stored audio state when the page loads
+        // Check audio state on page load and set accordingly
         window.onload = function() {
             var audioState = JSON.parse(localStorage.getItem('audioState'));
             var audio = document.getElementById('audio');
