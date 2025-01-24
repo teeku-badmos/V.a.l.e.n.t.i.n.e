@@ -17,20 +17,24 @@
             <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
         </div>
 
-        <!-- Play Song Button (Top Right Corner) -->
+        <!-- Play Song Button -->
         <button class="play-song-btn" id="playButton" onclick="togglePlayPause()">Play Our Song</button>
 
-        <!-- Audio element (Hidden) -->
-        <audio id="audio" preload="auto" style="display:none;">
+        <!-- Audio element -->
+        <audio id="audio" preload="auto">
             <source src="Tu-Mera-Koyi-Na-Hoke-Bhi-Kuch-Lage.mp3" type="audio/mp3">
         </audio>
     </div>
 
     <script>
-        // Function to navigate to yes.html and save the audio state
+        // Function to navigate to yes.html and save the audio state and current time
         function nextPage() {
-            // Store audio state (whether it is playing or paused)
-            localStorage.setItem('audioState', JSON.stringify({ playing: !document.getElementById('audio').paused }));
+            // Get the current time of the audio
+            var audio = document.getElementById('audio');
+            var currentTime = audio.currentTime; // Get current playback time
+            // Save the current time and audio state (whether it's playing or paused)
+            localStorage.setItem('audioTime', currentTime);
+            localStorage.setItem('audioState', JSON.stringify({ playing: !audio.paused }));
             window.location.href = "yes.html";
         }
 
