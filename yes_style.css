@@ -6,6 +6,20 @@ body {
     background-color: rgb(189, 225, 122);
 }
 
+.play-song-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    color: rgb(233, 48, 48);
+    padding: 15px 32px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 .header_text {
     font-family: 'Nunito';
     font-size: 50px;
