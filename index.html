@@ -17,19 +17,19 @@
             <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
         </div>
 
-        <!-- Play Song Button -->
+        <!-- Play Song Button (Top Right Corner) -->
         <button class="play-song-btn" id="playButton" onclick="togglePlayPause()">Play Our Song</button>
 
-        <!-- Audio element -->
-        <audio id="audio" preload="auto">
+        <!-- Audio element (Hidden) -->
+        <audio id="audio" preload="auto" style="display:none;">
             <source src="Tu-Mera-Koyi-Na-Hoke-Bhi-Kuch-Lage.mp3" type="audio/mp3">
         </audio>
     </div>
 
     <script>
-        // Function to redirect to yes.html
+        // Function to navigate to yes.html and save the audio state
         function nextPage() {
-            // Store the state of the song (whether it's playing or paused)
+            // Store audio state (whether it is playing or paused)
             localStorage.setItem('audioState', JSON.stringify({ playing: !document.getElementById('audio').paused }));
             window.location.href = "yes.html";
         }
@@ -55,6 +55,21 @@
                 audio.pause();
                 playButton.textContent = 'Play Our Song';
                 localStorage.setItem('audioState', JSON.stringify({ playing: false }));
+            }
+        }
+
+        // Check audio state on page load and set accordingly
+        window.onload = function() {
+            var audioState = JSON.parse(localStorage.getItem('audioState'));
+            var audio = document.getElementById('audio');
+            var playButton = document.getElementById('playButton');
+            
+            if (audioState && audioState.playing) {
+                audio.play();
+                playButton.textContent = 'Pause Our Song';
+            } else {
+                audio.pause();
+                playButton.textContent = 'Play Our Song';
             }
         }
     </script>
