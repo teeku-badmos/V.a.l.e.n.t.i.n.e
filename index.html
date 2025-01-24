@@ -21,20 +21,39 @@
         <button class="play-song-btn" id="playButton" onclick="togglePlayPause()">Play Our Song</button>
 
         <!-- Audio element -->
-       <audio id="audio" preload="auto">
-    <source src="Tu-Mera-Koyi-Na-Hoke-Bhi-Kuch-Lage.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-</audio>
-
+        <audio id="audio" preload="auto">
+            <source src="Tu-Mera-Koyi-Na-Hoke-Bhi-Kuch-Lage.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
     </div>
 
     <script>
+        // Function to redirect to yes.html
         function nextPage() {
             window.location.href = "yes.html";
         }
-        
+
+        // Function to move the "No" button randomly
         function moveButton() {
             var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth) - 85;
             var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight) - 48;
             document.getElementById('noButton').style.left = `${x}px`;
-            document.getElementB
+            document.getElementById('noButton').style.top = `${y}px`;
+        }
+
+        // Function to toggle play and pause on the audio
+        function togglePlayPause() {
+            var audio = document.getElementById('audio');
+            var playButton = document.getElementById('playButton');
+            
+            if (audio.paused) {
+                audio.play();
+                playButton.textContent = 'Pause Our Song';
+            } else {
+                audio.pause();
+                playButton.textContent = 'Play Our Song';
+            }
+        }
+    </script>
+</body> 
+</html>
