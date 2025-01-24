@@ -12,11 +12,11 @@
             <img src="https://media0.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Cute animated illustration">
         </div>
 
-        <!-- Play Song Button (Top Right Corner) -->
+        <!-- Play Song Button -->
         <button class="play-song-btn" id="playButton" onclick="togglePlayPause()">Play Our Song</button>
 
-        <!-- Audio element (Hidden) -->
-        <audio id="audio" preload="auto" style="display:none;">
+        <!-- Audio element -->
+        <audio id="audio" preload="auto">
             <source src="Tu-Mera-Koyi-Na-Hoke-Bhi-Kuch-Lage.mp3" type="audio/mp3">
         </audio>
     </div>
@@ -43,7 +43,13 @@
             var audioState = JSON.parse(localStorage.getItem('audioState'));
             var audio = document.getElementById('audio');
             var playButton = document.getElementById('playButton');
+            var savedTime = localStorage.getItem('audioTime');
             
+            // Set audio to the saved time if available
+            if (savedTime) {
+                audio.currentTime = savedTime;
+            }
+
             if (audioState && audioState.playing) {
                 audio.play();
                 playButton.textContent = 'Pause Our Song';
